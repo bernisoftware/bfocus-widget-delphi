@@ -1,0 +1,31 @@
+package BFocusWidgetVCL;
+
+{ bFocus Widget - VCL (Delphi 10.4+): TBFocusWidget híbrido (TEdgeBrowser/WebView2), telas
+  nativas (reserva sem WebView2 e TBFocusNativeWidget), botão e pílula. }
+
+{$DESCRIPTION 'bFocus Widget - VCL runtime'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+{$LIBSUFFIX AUTO}
+
+requires
+  rtl,
+  vcl,
+  vclwinx,
+  BFocusCore;
+
+contains
+  BFocusNotifier in '..\..\source\common\BFocusNotifier.pas',
+  BFocusWidgetBase in '..\..\source\common\BFocusWidgetBase.pas',
+  BFocusGraphics in '..\..\source\common\BFocusGraphics.pas',
+  BFocusUIControls in '..\..\source\native\BFocusUIControls.pas',
+  BFocusUIContext in '..\..\source\native\BFocusUIContext.pas',
+  BFocusUIReleaseNotes in '..\..\source\native\BFocusUIReleaseNotes.pas',
+  BFocusUIChat in '..\..\source\native\BFocusUIChat.pas',
+  BFocusUITickets in '..\..\source\native\BFocusUITickets.pas',
+  BFocusNativeUI in '..\..\source\native\BFocusNativeUI.pas',
+  BFocusNativeWidget in '..\..\source\native\BFocusNativeWidget.pas',
+  BFocusWebViewVcl in '..\..\source\vcl\BFocusWebViewVcl.pas',
+  BFocusWidgetVcl in '..\..\source\vcl\BFocusWidgetVcl.pas';
+
+end.

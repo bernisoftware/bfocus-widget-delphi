@@ -1,0 +1,19 @@
+package BFocusWidgetFMXDesign;
+
+{ bFocus Widget - registro dos componentes FMX na paleta "bFocus". }
+
+{$DESCRIPTION 'bFocus Widget - FMX design'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+{$LIBSUFFIX AUTO}
+
+requires
+  rtl,
+  fmx,
+  designide,
+  BFocusWidgetFMX;
+
+contains
+  BFocusRegFmx in '..\..\source\fmx\BFocusRegFmx.pas';
+
+end.

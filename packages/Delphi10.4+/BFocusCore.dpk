@@ -1,0 +1,34 @@
+package BFocusCore;
+
+{ bFocus Widget - núcleo sem UI (Delphi 10.4+): JSON, HTTP, protocolo, API, view-models.
+  Usado pelos pacotes VCL e FMX (a mesma unit não pode estar em dois pacotes). }
+
+{$DESCRIPTION 'bFocus Widget - core'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+{$LIBSUFFIX AUTO}
+
+requires
+  rtl;
+
+contains
+  BFocusText in '..\..\source\core\BFocusText.pas',
+  BFocusJson in '..\..\source\core\BFocusJson.pas',
+  BFocusHttp in '..\..\source\core\BFocusHttp.pas',
+  BFocusHttpNet in '..\..\source\core\BFocusHttpNet.pas',
+  BFocusHttpWinInet in '..\..\source\core\BFocusHttpWinInet.pas',
+  BFocusHttpDefault in '..\..\source\core\BFocusHttpDefault.pas',
+  BFocusConfig in '..\..\source\core\BFocusConfig.pas',
+  BFocusModels in '..\..\source\core\BFocusModels.pas',
+  BFocusStorage in '..\..\source\core\BFocusStorage.pas',
+  BFocusApi in '..\..\source\core\BFocusApi.pas',
+  BFocusFormat in '..\..\source\core\BFocusFormat.pas',
+  BFocusI18n in '..\..\source\core\BFocusI18n.pas',
+  BFocusTokens in '..\..\source\core\BFocusTokens.pas',
+  BFocusLauncher in '..\..\source\core\BFocusLauncher.pas',
+  BFocusAsync in '..\..\source\core\BFocusAsync.pas',
+  BFocusVMTickets in '..\..\source\core\BFocusVMTickets.pas',
+  BFocusVMChat in '..\..\source\core\BFocusVMChat.pas',
+  BFocusVMReleaseNotes in '..\..\source\core\BFocusVMReleaseNotes.pas';
+
+end.

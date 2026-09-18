@@ -1,0 +1,46 @@
+package BFocusWidgetD7;
+
+{ bFocus Widget - Delphi 7 a 2007: telas nativas VCL (Fase 6). Runtime e registro no mesmo
+  pacote (o registro só usa RegisterComponents). Transporte HTTP: WinInet.
+  Com o HtmlViewer instalado: acrescente o pacote dele em "requires" e defina
+  BFOCUS_HTMLVIEWER em Project > Options > Directories/Conditionals. }
+
+{$DESCRIPTION 'bFocus Widget (VCL nativo)'}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vcljpg;
+
+contains
+  BFocusText in '..\..\source\core\BFocusText.pas',
+  BFocusJson in '..\..\source\core\BFocusJson.pas',
+  BFocusHttp in '..\..\source\core\BFocusHttp.pas',
+  BFocusHttpWinInet in '..\..\source\core\BFocusHttpWinInet.pas',
+  BFocusHttpDefault in '..\..\source\core\BFocusHttpDefault.pas',
+  BFocusConfig in '..\..\source\core\BFocusConfig.pas',
+  BFocusModels in '..\..\source\core\BFocusModels.pas',
+  BFocusStorage in '..\..\source\core\BFocusStorage.pas',
+  BFocusApi in '..\..\source\core\BFocusApi.pas',
+  BFocusFormat in '..\..\source\core\BFocusFormat.pas',
+  BFocusI18n in '..\..\source\core\BFocusI18n.pas',
+  BFocusTokens in '..\..\source\core\BFocusTokens.pas',
+  BFocusLauncher in '..\..\source\core\BFocusLauncher.pas',
+  BFocusAsync in '..\..\source\core\BFocusAsync.pas',
+  BFocusVMTickets in '..\..\source\core\BFocusVMTickets.pas',
+  BFocusVMChat in '..\..\source\core\BFocusVMChat.pas',
+  BFocusVMReleaseNotes in '..\..\source\core\BFocusVMReleaseNotes.pas',
+  BFocusNotifier in '..\..\source\common\BFocusNotifier.pas',
+  BFocusWidgetBase in '..\..\source\common\BFocusWidgetBase.pas',
+  BFocusGraphics in '..\..\source\common\BFocusGraphics.pas',
+  BFocusUIControls in '..\..\source\native\BFocusUIControls.pas',
+  BFocusUIContext in '..\..\source\native\BFocusUIContext.pas',
+  BFocusUIReleaseNotes in '..\..\source\native\BFocusUIReleaseNotes.pas',
+  BFocusUIChat in '..\..\source\native\BFocusUIChat.pas',
+  BFocusUITickets in '..\..\source\native\BFocusUITickets.pas',
+  BFocusNativeUI in '..\..\source\native\BFocusNativeUI.pas',
+  BFocusNativeWidget in '..\..\source\native\BFocusNativeWidget.pas',
+  BFocusReg in '..\..\source\native\BFocusReg.pas';
+
+end.

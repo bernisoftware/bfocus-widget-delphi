@@ -1,0 +1,51 @@
+# Espelho bernisoftware/bfocus-widget-delphi.
+# O Delphi não roda em CI (licença): aqui só o núcleo (Object Pascal comum a Delphi 7+ e
+# FPC) é compilado e testado com Free Pascal, incluindo a integração HTTP com o servidor
+# simulado do kit de conformidade. O Boss publica pela própria tag.
+name: publish
+
+on:
+  push:
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        # Menor e maior Ubuntu com FPC 3.2.x no apt.
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Free Pascal
+        run: sudo apt-get update && sudo apt-get install -y fpc
+      - name: Fontes compatíveis com Delphi 7 (literais ASCII, comentários)
+        run: node tools/check-sources.mjs
+      - name: Compilar testes do núcleo
+        run: sh tests/build-fpc.sh tests/out
+      - name: Testes (cenários + view-models + integração HTTP)
+        run: node tests/run-tests.mjs tests/out/BFocusTests
+
+  release:
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag = versão do boss.json
+        run: |
+          V=$(node -p "require('./boss.json').version")
+          T="${GITHUB_REF_NAME#v}"
+          if [ "$V" != "$T" ]; then echo "tag $T difere do boss.json ($V)"; exit 1; fi
+      - name: Release no GitHub (o Boss instala pela tag)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file CHANGELOG.md

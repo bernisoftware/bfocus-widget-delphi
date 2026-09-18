@@ -1,0 +1,18 @@
+package BFocusWidgetFMX;
+
+{ bFocus Widget - FMX (Delphi 10.4+, Windows e macOS): TBFocusFmxWidget com TWebBrowser. }
+
+{$DESCRIPTION 'bFocus Widget - FMX runtime'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+{$LIBSUFFIX AUTO}
+
+requires
+  rtl,
+  fmx,
+  BFocusCore;
+
+contains
+  BFocusWidgetFmx in '..\..\source\fmx\BFocusWidgetFmx.pas';
+
+end.

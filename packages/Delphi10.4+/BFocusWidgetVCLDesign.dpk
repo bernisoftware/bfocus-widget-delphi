@@ -1,0 +1,19 @@
+package BFocusWidgetVCLDesign;
+
+{ bFocus Widget - registro dos componentes VCL na paleta "bFocus". }
+
+{$DESCRIPTION 'bFocus Widget - VCL design'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+{$LIBSUFFIX AUTO}
+
+requires
+  rtl,
+  vcl,
+  designide,
+  BFocusWidgetVCL;
+
+contains
+  BFocusRegVcl in '..\..\source\vcl\BFocusRegVcl.pas';
+
+end.

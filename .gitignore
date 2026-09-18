@@ -1,0 +1,16 @@
+tests/out/
+**/__history/
+**/__recovery/
+*.dcu
+*.ppu
+*.o
+*.a
+*.exe
+*.bpl
+*.dcp
+*.local
+*.identcache
+*.dsk
+*.~*
+*.res
+bfocus-test-*.ini
