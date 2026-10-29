@@ -175,7 +175,7 @@ begin
   Result := (S >= 400) and (S < 500) and (S <> 408) and (S <> 425) and (S <> 429);
 end;
 
-function BFClosingOutcome(Conv: TBFJson): TBFClosingOutcome;
+function BFClosingOutcomeOf(Conv: TBFJson): TBFClosingOutcome;
 var
   Reason, TS, St: string;
   Continues: Boolean;
@@ -201,6 +201,14 @@ begin
   else if (St = 'closed') and (Conv.StrOf('first_response_at') <> '') then
     Result := coCsat
   else
+    Result := coPlain;
+end;
+
+function BFClosingOutcome(Conv: TBFJson): TBFClosingOutcome;
+begin
+  Result := BFClosingOutcomeOf(Conv);
+  // Sem pesquisa (a empresa ou quem encerrou não manda): fica só o aviso de encerrada.
+  if (Result = coCsat) and Conv.Has('survey') and not Conv.BoolOf('survey', True) then
     Result := coPlain;
 end;
 

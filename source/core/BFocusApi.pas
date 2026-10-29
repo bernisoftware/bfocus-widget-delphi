@@ -172,6 +172,7 @@ function BFIsIdentityError(E: Exception): Boolean;
 begin
   Result := (E is EBFocusApiError) and (EBFocusApiError(E).Status = 401) and
     ((EBFocusApiError(E).Code = 'WIDGET_USER_HASH_INVALID') or
+     (EBFocusApiError(E).Code = 'WIDGET_USER_HASH_EXPIRED') or
      (EBFocusApiError(E).Code = 'WIDGET_VERIFIED_SESSION_REQUIRED'));
 end;
 

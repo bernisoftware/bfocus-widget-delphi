@@ -12,7 +12,7 @@ uses
   SysUtils, Classes, BFocusText, BFocusJson, BFocusHttp;
 
 const
-  BF_PACKAGE_VERSION = '0.1.0';
+  BF_PACKAGE_VERSION = '0.1.1';
   { Família do header X-bFocus-Client: o mesmo núcleo serve aos dois pacotes. }
   {$IFDEF BF_FPC}
   BF_CLIENT_FAMILY = 'lazarus';

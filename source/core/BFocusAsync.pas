@@ -173,6 +173,7 @@ end;
 function TBFJob.IsIdentityError: Boolean;
 begin
   Result := (FErrorStatus = 401) and ((FErrorCode = 'WIDGET_USER_HASH_INVALID') or
+    (FErrorCode = 'WIDGET_USER_HASH_EXPIRED') or
     (FErrorCode = 'WIDGET_VERIFIED_SESSION_REQUIRED'));
 end;
 

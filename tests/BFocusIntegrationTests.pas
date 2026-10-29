@@ -112,7 +112,7 @@ begin
         CheckEq(H.StrOf('x-bfocus-widget-key'), 'bf_pk_test_123', 'header chave');
         CheckEq(H.StrOf('x-bfocus-widget-user'), BFUserHeader(Cfg), 'header usuário (com Açaí)');
         CheckEq(H.StrOf('x-bfocus-parent-origin'), 'app://com.empresa.erp', 'header origem');
-        CheckEq(H.StrOf('x-bfocus-client'), BF_CLIENT_FAMILY + '/0.1.0', 'header cliente');
+        CheckEq(H.StrOf('x-bfocus-client'), BF_CLIENT_FAMILY + '/' + BF_PACKAGE_VERSION, 'header cliente');
         Check(Pos('application/json', H.StrOf('content-type')) = 1, 'header content-type');
       end;
     finally

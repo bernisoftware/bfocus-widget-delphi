@@ -308,6 +308,15 @@ begin
   finally
     A.Free; B.Free; C.Free;
   end;
+  // Sem pesquisa (a empresa ou quem encerrou): resolvido mostra só o aviso.
+  A := Conv('closed', ',"close_reason":"resolved","ticket_status":"resolved","survey":false');
+  B := Conv('closed', ',"close_reason":"resolved","ticket_status":"resolved","survey":true');
+  try
+    Check(BFClosingOutcome(A) = coPlain, 'sem pesquisa: plain');
+    Check(BFClosingOutcome(B) = coCsat, 'com pesquisa: csat');
+  finally
+    A.Free; B.Free;
+  end;
   A := Conv('bot', ',"agent":{"name":"Lia","avatar_url":null}');
   Av := J('{"enabled":true,"status":"online","queue_size":0,"ai_agent":{"name":"Lia","avatar_url":null}}');
   try

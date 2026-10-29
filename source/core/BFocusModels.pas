@@ -324,10 +324,12 @@ end;
 { ── Host Protocol ──────────────────────────────────────────────────────── }
 
 const
-  KNOWN_TYPES: array[0..10] of string = (
+  { 'bfocus:identity-expired' é aditiva: a assinatura v2 venceu (7 dias) e o embed
+    pede outra ao OnUserHashRequest. Host antigo que ignora segue funcionando. }
+  KNOWN_TYPES: array[0..11] of string = (
     'bfocus:ready', 'bfocus:close', 'bfocus:unread', 'bfocus:seen', 'bfocus:branding',
-    'bfocus:error', 'bfocus:openExternal', 'bfocus:download', 'bfocus:rn:branding',
-    'bfocus:rn:done', 'bfocus:rn:closeHistory');
+    'bfocus:error', 'bfocus:identity-expired', 'bfocus:openExternal', 'bfocus:download',
+    'bfocus:rn:branding', 'bfocus:rn:done', 'bfocus:rn:closeHistory');
 
 function BFIsKnownEmbedType(const MsgType: string): Boolean;
 var

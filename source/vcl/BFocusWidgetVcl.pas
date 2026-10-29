@@ -297,14 +297,22 @@ begin
       Code := P.StrOf('code')
     else
       Code := '';
-    // Hash recusado: pede um novo e recarrega; só avisa se não houver como renovar.
-    if (Code = 'WIDGET_USER_HASH_INVALID') and HostIdentityRefresh then
+    // Hash recusado (ou vencido): pede um novo e recarrega; só avisa se não houver
+    // como renovar.
+    if ((Code = 'WIDGET_USER_HASH_INVALID') or (Code = 'WIDGET_USER_HASH_EXPIRED'))
+      and HostIdentityRefresh then
     begin
       if FTickets <> nil then
         FTickets.Load(BFEmbedUrl(Config, epEmbed, hmNative, '', '', []));
     end
     else if P <> nil then
       HostError(Code, P.StrOf('detail'));
+  end
+  else if MsgType = 'bfocus:identity-expired' then
+  begin
+    // Assinatura v2 vencida com o widget aberto: hash novo e recarga, sem OnError.
+    if HostIdentityRefresh and (FTickets <> nil) then
+      FTickets.Load(BFEmbedUrl(Config, epEmbed, hmNative, '', '', []));
   end
   else if MsgType = 'bfocus:openExternal' then
   begin

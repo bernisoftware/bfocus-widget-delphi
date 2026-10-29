@@ -133,7 +133,7 @@ com o widget fechado** (senão a notificação nunca apareceria). Rede ou 5xx: s
 
 | Código | Quando |
 |---|---|
-| `WIDGET_USER_HASH_INVALID`, `WIDGET_VERIFIED_SESSION_REQUIRED` | identidade recusada (401). Com `OnUserHashRequest`, o pacote pede um hash novo **uma vez** e repete; só avisa se a repetição também for recusada. O mesmo código é avisado uma vez, até o próximo sucesso |
+| `WIDGET_USER_HASH_INVALID`, `WIDGET_USER_HASH_EXPIRED`, `WIDGET_VERIFIED_SESSION_REQUIRED` | identidade recusada (401; `_EXPIRED` = assinatura v2 fora dos 7 dias, renovada sem avisar quando há `OnUserHashRequest`). Com `OnUserHashRequest`, o pacote pede um hash novo **uma vez** e repete; só avisa se a repetição também for recusada. O mesmo código é avisado uma vez, até o próximo sucesso |
 | `HTTP_403` (ou o código do envelope) | outros 4xx do `launcher-state`, ex.: origem não cadastrada |
 | `WIDGET_CONFIG_FAILED` | `/config` falhou ao abrir o widget |
 | `DOWNLOAD_FAILED` | download de anexo (híbrido) |

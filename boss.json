@@ -1,7 +1,7 @@
 {
   "name": "bfocus-widget-delphi",
   "description": "Widget bFocus (chamados, chat ao vivo e release notes) para Delphi: 10.4+ com WebView2 (VCL) ou TWebBrowser (FMX); 7+ com telas nativas VCL.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/bernisoftware/bfocus-widget-delphi",
   "mainsrc": "source/",
   "browsingpath": "source/core;source/common;source/native;source/vcl;source/fmx",

@@ -653,6 +653,15 @@ begin
   begin
     if Assigned(FOnError) then
       FOnError(Self, P.StrOf('code'), P.StrOf('detail'));
+    if ((P.StrOf('code') = 'WIDGET_USER_HASH_INVALID') or
+        (P.StrOf('code') = 'WIDGET_USER_HASH_EXPIRED')) and HostIdentityRefresh and (FTickets <> nil) then
+      FTickets.Load(BFEmbedUrl(FConfig, epEmbed, hmNative, '', '', []));
+  end
+  else if MsgType = 'bfocus:identity-expired' then
+  begin
+    // Assinatura v2 vencida: hash novo do OnUserHashRequest e recarga, sem OnError.
+    if HostIdentityRefresh and (FTickets <> nil) then
+      FTickets.Load(BFEmbedUrl(FConfig, epEmbed, hmNative, '', '', []));
   end
   else if (MsgType = 'bfocus:openExternal') and (P <> nil) then
     OpenExternal(P.StrOf('url'))

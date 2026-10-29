@@ -448,7 +448,7 @@ begin
     CheckEq(Cfg.Validate, '', 'config válida');
     Cfg.ApiBaseUrl := 'http://api.exemplo.com';
     Check(Cfg.Validate <> '', 'http fora de localhost recusado');
-    CheckEq(Cfg.ClientId, BF_CLIENT_FAMILY + '/0.1.0', 'X-bFocus-Client padrão');
+    CheckEq(Cfg.ClientId, BF_CLIENT_FAMILY + '/' + BF_PACKAGE_VERSION, 'X-bFocus-Client padrão');
     CheckEq(BFOpenParam(ovTicket, 'abc'), 'ticket:abc', 'open ticket');
     CheckEq(BFOpenParam(ovList, ''), '', 'open lista omitido');
   finally
@@ -544,6 +544,12 @@ begin
     Check(not (leBanner in Ev) and L.Pill.Dot, 'modo navegador: banner não abre sozinho, ponto acende');
     L.BrowserMode := False;
     // Identidade: avisa uma vez por código; volta a avisar depois de um sucesso.
+    F := Failure(401, 'WIDGET_USER_HASH_EXPIRED');
+    Check(TBFLauncherCore.NeedsHashRetry(F), 'assinatura v2 vencida também pede hash novo');
+    F.Free;
+    { Mensagem aditiva do Host Protocol: o embed pede identidade nova. }
+    Check(BFIsKnownEmbedType('bfocus:identity-expired'), 'bfocus:identity-expired é conhecida');
+    Check(not BFIsKnownEmbedType('bfocus:algo-novo'), 'tipo desconhecido segue ignorado');
     F := Failure(401, 'WIDGET_USER_HASH_INVALID');
     Check(TBFLauncherCore.NeedsHashRetry(F), '401 de identidade pede hash novo');
     Ev := L.Apply(F);

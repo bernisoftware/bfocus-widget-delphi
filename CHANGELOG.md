@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — 2026-10-29
+
+- Fim do chat: com `survey: false` na conversa (a empresa ou quem encerrou não manda a pesquisa
+  de satisfação), `BFClosingOutcome` devolve `coPlain`: só o aviso de encerrada, sem o
+  formulário de avaliação.
+
 ## 0.1.0 — 2026-09-15
 
 Primeira versão.

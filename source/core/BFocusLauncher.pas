@@ -103,7 +103,9 @@ end;
 
 function TBFLauncherFetch.IsIdentityError: Boolean;
 begin
+  { WIDGET_USER_HASH_EXPIRED: assinatura v2 fora dos 7 dias — pedir outra resolve. }
   Result := (Status = 401) and ((ErrorCode = 'WIDGET_USER_HASH_INVALID') or
+    (ErrorCode = 'WIDGET_USER_HASH_EXPIRED') or
     (ErrorCode = 'WIDGET_VERIFIED_SESSION_REQUIRED'));
 end;
 
